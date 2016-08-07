@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #fdfdfd;
-}
-
 @mixin clearfix {
   &:after {
     content: "";
@@ -14,13 +10,18 @@ body {
   }
 }
 
-#main {
-  padding-top: 60px;
-  margin: 0 auto;
-}
+
+
 
 @import 'directives/main';
 @import 'home/main';
 @import 'about/main';
 @import 'tutorial/main';
 @import 'login/main';
+@import 'animation/main';
+@import 'graph/main';
+
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
+

@@ -9,9 +9,29 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('AboutController', function ($scope, FullstackPics) {
+app.controller('AboutController', function ($scope, toGoog, $log, toTwit) {
+  $scope.result = null;
 
-    // Images of beautiful Fullstack people.
-    $scope.images = _.shuffle(FullstackPics);
+  $scope.sendToTwit = function(username) {
+    toTwit.getTweets(username)
+    .then(function(result) {
+      toGoog.postReq(result.data)
+      .then(function(sentimentObj) {
+        $scope.result = sentimentObj;
+      });
+    })
+    .catch(function(err) {
+      $log.err;
+    });
+  };
 
+  $scope.sendToGoog = function(content) {
+    toGoog.postReq(content)
+    .then(function(result) {
+      $scope.result = result;
+    })
+    .catch(function(err) {
+      $log.err;
+    });
+  };
 });

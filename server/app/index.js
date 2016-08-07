@@ -2,14 +2,6 @@
 var path = require('path');
 var express = require('express');
 var app = express();
-var rp = require('request-promise');
-var request = require('request');
-let Promise = require('bluebird');
-
-var clientId = '78af32af57f447788cfb962016deb809';
-var clientSecret = 'f64e985685b04991be590099d445f625';
-var redirectUri = 'http://localhost:1337/code';
-var accessToken;
 
 module.exports = function (db) {
 
@@ -35,36 +27,6 @@ module.exports = function (db) {
         } else {
             next(null);
         }
-
-    });
-
-    app.get('/authInsta', function (req, res) {
-        res.redirect('https://api.instagram.com/oauth/authorize/?client_id=' + clientId + '&redirect_uri=' + redirectUri + '&response_type=code&scope=public_content+follower_list');
-    });
-
-    app.get('/code', function (req, res) {
-      var options = {
-          method: 'POST',
-          uri: 'https://api.instagram.com/oauth/access_token',
-          form: {
-              client_id: clientId,
-              client_secret: clientSecret,
-              grant_type: 'authorization_code',
-              redirect_uri: redirectUri,
-              code: req.query.code
-          },
-          json: true, // Automatically stringifies the body to JSON
-          simple: false
-      };
-      rp(options)
-          .then(function (parsedBody) {
-            accessToken = parsedBody.access_token;
-            res.redirect('https://api.instagram.com/v1/locations/89875161/media/recent?access_token=' + accessToken);
-          })
-          .catch(function (err) {
-              res.send(err);
-          });
-
 
     });
 

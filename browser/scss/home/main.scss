@@ -1,12 +1,162 @@
-#home {
-  fullstack-logo {
-    padding-top: 30px;
-    width: 150px;
-    margin: 0 auto;
-  }
-  h1 {
-    margin-top: 40px;
-    text-align: center;
-  }
+.box {
+  background-color: #218D9B;
+  height: 100px;
+  width: 100px;
 }
 
+.transform {
+  -webkit-transition: all 2s ease;
+  -moz-transition: all 2s ease;
+  -o-transition: all 2s ease;
+  -ms-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.transform-active {
+  background-color: #45CEE0;
+  height: 200px;
+  width: 200px;
+}
+
+
+.centeredStuff {
+  margin-top: 80px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 480px;
+  color: white;
+  mdl-button {
+    background-color: red;
+  }
+}
+.leftSide {
+  width: 50%;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  color: white;
+
+  background: -moz-linear-gradient(90deg, rgba(175,96,97,1) 0%, rgba(253,116,108,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(253,116,108,1)), color-stop(100%, rgba(175,96,97,1))); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, rgba(175,96,97,1) 0%, rgba(253,116,108,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, rgba(175,96,97,1) 0%, rgba(253,116,108,1) 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, rgba(175,96,97,1) 0%, rgba(253,116,108,1) 100%); /* ie10+ */
+  background: linear-gradient(0deg, rgba(175,96,97,1) 0%, rgba(253,116,108,1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FD746C', endColorstr='#af6061',GradientType=0 ); /* ie6-9 */
+
+}
+
+.rightSide {
+  width: 50%;
+  height: 100%;
+  right: 0px;
+  position: absolute;
+
+
+  -webkit-box-shadow: -9px -1px 47px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: -9px -1px 47px 0px rgba(0,0,0,0.29);
+  box-shadow: -9px -1px 47px 0px rgba(0,0,0,0.29);
+
+  background: -moz-linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(76,77,94,1) 100%); /* ff3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(76,77,94,1)), color-stop(100%, rgba(44,62,80,1))); /* safari4+,chrome */
+  background: -webkit-linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(76,77,94,1) 100%); /* safari5.1+,chrome10+ */
+  background: -o-linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(76,77,94,1) 100%); /* opera 11.10+ */
+  background: -ms-linear-gradient(90deg, rgba(44,62,80,1) 0%, rgba(76,77,94,1) 100%); /* ie10+ */
+  background: linear-gradient(0deg, rgba(44,62,80,1) 0%, rgba(76,77,94,1) 100%); /* w3c */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4d5e', endColorstr='#2C3E50',GradientType=0 ); /* ie6-9 */
+
+}
+
+/* form starting stylings ------------------------------- */
+.group            {
+  position:relative;
+  margin-bottom:45px;
+}
+input               {
+  font-size:18px;
+  background-color: transparent;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:480px;
+  border:none;
+  border-bottom:1px solid #bd6363;
+}
+input:focus         { outline:none; }
+
+/* LABEL ======================================= */
+label                {
+  color:#bd6363;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label        {
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar    { position:relative; display:block; width:480px; }
+.bar:before, .bar:after     {
+  content:'';
+  height:2px;
+  width:0;
+  bottom:0px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}

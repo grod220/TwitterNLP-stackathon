@@ -1,4 +1,77 @@
-<section id="home">
-    <fullstack-logo></fullstack-logo>
-    <rando-greeting></rando-greeting>
-</section>
+<div class="leftSide">
+  <h1>A bunch of white text</h1>
+  <h1>A bunch of white text</h1>
+  <h1>A bunch of white text</h1>
+
+  <div class="graph">
+          <div style="height: 22px;" class="bar"></div><!--
+          --><div style="height: 11px;" class="bar"></div><!--
+          --><div style="height: 6px;" class="bar"></div><!--
+          --><div style="height: 49px;" class="bar"></div><!--
+          --><div style="height: 28px;" class="bar"></div>
+  </div>
+
+</div>
+
+
+<div class="rightSide">
+  <div class="centeredStuff" ng-show="formShow">
+    <h1>Enter something amazing</h1>
+    <form>
+        <div class="group">
+          <input type="text" ng-model="userName" required />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Username</label>
+        </div>
+    </form>
+    <button type="submit" ng-click="sendToTwit(userName)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+       Button
+    </button>
+  </div>
+
+  <div ng-show="result">
+    <h1>{{ result.data.documentSentiment }}</h1>
+    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+     Reset
+    </button>
+  </div>
+
+<!--   <button type="submit" ng-click="hitMe()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+     TESTER
+  </button> -->
+
+  <!-- <div class="box transform" ng-class="addThisGuy">
+  </div> -->
+
+  <div ng-if="bool" class="containn getIn">
+    <div class="loader">
+      <div class="loader--dot"></div>
+      <div class="loader--dot"></div>
+      <div class="loader--dot"></div>
+      <div class="loader--dot"></div>
+      <div class="loader--dot"></div>
+      <div class="loader--dot"></div>
+      <div class="loader--text"></div>
+    </div>
+  </div>
+
+<!--
+  <div ng-if="bool" class="getIn">
+     <h1>Fade me in out</h1>
+  </div>
+  <button ng-click="bool=true">Fade In!</button>
+  <button ng-click="bool=false">Fade Out!</button>
+ -->
+
+
+  <!-- <div>
+    <form novalidate class="simple-form">
+      CONTENT: <input type="text" ng-model="content" /><br />
+      <input type="submit" ng-click="sendToGoog(content)" value="Save" />
+    </form>
+  </div> -->
+</div>
+
+
+
