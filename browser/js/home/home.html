@@ -44,15 +44,15 @@
 
 
 <!-- PART 2: The result page shows -->
-  <div class="theResult getIn" ng-show="result">
+  <div class="theResult getIn" ng-if="result">
     <img class="twitterImage" ng-src="{{ profileUrl }}" />
 
     <div class="resultsData">
-      <p><span class="resultsOuter">Polarity: ({{ result.data.documentSentiment.polarity }})</span></p>
-      <p><span class="resultsOuter">Magnitude: ({{ result.data.documentSentiment.magnitude }})</span></p>
+      <p><span class="resultsOuter">Polarity: <span ng-style="polStyle" class="polTextColor">{{ polText }}</span> ({{ result.data.documentSentiment.polarity }})</span></p>
+      <p><span class="resultsOuter">Emotion-level: <span ng-style="magStyle" class="magTextColor">{{ magText }}</span>  ({{ result.data.documentSentiment.magnitude }})</span></p>
     </div>
 
-    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent tryAnother">
+    <button type="submit" ng-click="toReturn()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent tryAnother">
      Try another
     </button>
 

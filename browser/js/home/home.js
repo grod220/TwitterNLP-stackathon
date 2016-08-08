@@ -12,6 +12,8 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
   $scope.addThisGuy = null;
   $scope.bool = false;
   $scope.formShow = true;
+  $scope.polText;
+  $scope.magText;
 
   $scope.hitMe = function() {
     $scope.addThisGuy = !$scope.addThisGuy ? 'transform-active' : null;
@@ -31,6 +33,10 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
         $scope.formShow = false;
         setTimeout(function() {
           $scope.result = sentimentObj;
+          $scope.polStyle = {"color":toTwit.getPolText(sentimentObj.data.documentSentiment.polarity)[1]};
+          $scope.polText = toTwit.getPolText(sentimentObj.data.documentSentiment.polarity)[0];
+          $scope.magStyle = {"color":toTwit.getMagText(sentimentObj.data.documentSentiment.magnitude)[1]};
+          $scope.magText = toTwit.getMagText(sentimentObj.data.documentSentiment.magnitude)[0];
           $rootScope.$digest();
         }, 1000);
       });
@@ -48,5 +54,14 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
     .catch(function(err) {
       $log.err;
     });
+  };
+
+  $scope.toReturn = function() {
+    $scope.result = false;
+    $scope.userName = '';
+    setTimeout(function() {
+      $scope.formShow = true;
+      $rootScope.$digest();
+    }, 500);
   };
 });
