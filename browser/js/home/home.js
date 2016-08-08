@@ -13,24 +13,26 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
   $scope.bool = false;
   $scope.formShow = true;
 
-  // $scope.hitMe = function() {
-  //   $scope.addThisGuy = !$scope.addThisGuy ? 'transform-active' : null;
-  //   $scope.bool = !$scope.bool;
-  // };
+  // {"width":"200px"}
+
+  $scope.hitMe = function() {
+    $scope.addThisGuy = !$scope.addThisGuy ? 'transform-active' : null;
+    $scope.bool = !$scope.bool;
+  };
 
 
   $scope.sendToTwit = function(username) {
     $scope.bool = !$scope.bool;
     toTwit.getTweets(username)
     .then(function(result) {
-      toGoog.postReq(result.data)
+      $scope.profileUrl = result.data.profilePhoto;
+      toGoog.postReq(result.data.tweets)
       .then(function(sentimentObj) {
         $scope.bool = !$scope.bool;
         $scope.formShow = false;
         setTimeout(function() {
           $scope.result = sentimentObj;
           $rootScope.$digest();
-          console.log($scope.result);
         }, 1000);
       });
     })

@@ -1,48 +1,34 @@
 <div class="leftSide">
-  <h1>A bunch of white text</h1>
-  <h1>A bunch of white text</h1>
-  <h1>A bunch of white text</h1>
+  <img class="topLeftIcon" ng-src="/images/websiteicon.png" height="75" width="75"/>
+  <p class="leftTitle" >Mean or nice?</p>
+  <p class="leftSubtitle">Gage the sentiment of Twitter users using machine learning</p>
 
-  <div class="graph">
-          <div style="height: 22px;" class="bar"></div><!--
-          --><div style="height: 11px;" class="bar"></div><!--
-          --><div style="height: 6px;" class="bar"></div><!--
-          --><div style="height: 49px;" class="bar"></div><!--
-          --><div style="height: 28px;" class="bar"></div>
-  </div>
+  <img class="twitterLine" ng-src="/images/twitterLine.png" height="302" width="400"/>
 
 </div>
 
 
 <div class="rightSide">
   <div class="centeredStuff" ng-show="formShow">
-    <h1>Enter something amazing</h1>
+    <h1 class="rightTitle">Enter a Twitter username</h1>
+
+
     <form>
         <div class="group">
           <input type="text" ng-model="userName" required />
           <span class="highlight"></span>
           <span class="bar"></span>
+          <p class="rightSubtitle">@HillaryClinton, @realDonaldTrump, @DalaiLama, or yours!</p>
           <label>Username</label>
         </div>
     </form>
     <button type="submit" ng-click="sendToTwit(userName)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-       Button
+       submit
     </button>
   </div>
 
-  <div ng-show="result">
-    <h1>{{ result.data.documentSentiment }}</h1>
-    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-     Reset
-    </button>
-  </div>
 
-<!--   <button type="submit" ng-click="hitMe()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-     TESTER
-  </button> -->
-
-  <!-- <div class="box transform" ng-class="addThisGuy">
-  </div> -->
+<!-- Loading ticker -->
 
   <div ng-if="bool" class="containn getIn">
     <div class="loader">
@@ -56,6 +42,25 @@
     </div>
   </div>
 
+
+<!-- PART 2: The result page shows -->
+  <div ng-show="result">
+    <h1>{{ result.data.documentSentiment }}</h1>
+    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+     Reset
+    </button>
+
+    </br>
+    <p>{{ profileUrl }}</p>
+    <img ng-src="{{ profileUrl }}" />
+    <h1>Polarity: {{ result.data.documentSentiment.polarity }}</h1>
+    <h1>Magnitude: {{ result.data.documentSentiment.magnitude }}</h1>
+
+
+  </div>
+
+  <!-- <div class="box transform" ng-class="addThisGuy">
+  </div> -->
 <!--
   <div ng-if="bool" class="getIn">
      <h1>Fade me in out</h1>
@@ -63,8 +68,6 @@
   <button ng-click="bool=true">Fade In!</button>
   <button ng-click="bool=false">Fade Out!</button>
  -->
-
-
   <!-- <div>
     <form novalidate class="simple-form">
       CONTENT: <input type="text" ng-model="content" /><br />

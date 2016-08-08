@@ -4,7 +4,10 @@ app.factory('toTwit', function ($http) {
             var toPost = {
                 'userName': username
             };
-          return $http.post('/api/twitter', toPost);
+            return $http.post('/api/twitter', toPost)
+            .then(function(result) {
+              return result;
+            });
         }
     };
 });

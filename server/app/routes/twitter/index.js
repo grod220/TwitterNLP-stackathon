@@ -30,12 +30,21 @@ var client = new Twitter({
 });
 
 router.post('/', function(req,res) {
-  client.get('/statuses/user_timeline.json', {screen_name: req.body.userName, count: 200}, function(error, tweets, response) {
-    var holder = '';
-    for (var i=0; i<tweets.length; i++) {
-      holder += tweets[i].text;
-    }
-    var b = holder.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-    res.send(b);
+  client.get('/users/show.json', {screen_name: req.body.userName}, function(error, profile, response) {
+    // var profilePhoto = profile.profile_image_url.slice(0,-11) + '.jpg';
+    var profilePhoto = profile.profile_image_url.replace(/_normal/, '');
+    var profileBanner = profile.profile_banner_url;
+    client.get('/statuses/user_timeline.json', {screen_name: req.body.userName, count: 200}, function(error, tweets, response) {
+      var holder = '';
+      for (var i=0; i<tweets.length; i++) {
+        holder += tweets[i].text;
+      }
+      var b = holder.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+      res.send({
+        tweets: b,
+        profilePhoto: profilePhoto,
+        profileBanner: profileBanner
+      });
+    });
   });
 });
