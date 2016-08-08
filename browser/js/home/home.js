@@ -13,8 +13,6 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
   $scope.bool = false;
   $scope.formShow = true;
 
-  // {"width":"200px"}
-
   $scope.hitMe = function() {
     $scope.addThisGuy = !$scope.addThisGuy ? 'transform-active' : null;
     $scope.bool = !$scope.bool;
@@ -23,6 +21,7 @@ app.controller('HomeController', function ($scope, toGoog, $log, toTwit, $rootSc
 
   $scope.sendToTwit = function(username) {
     $scope.bool = !$scope.bool;
+    $scope.formShow = !$scope.formShow;
     toTwit.getTweets(username)
     .then(function(result) {
       $scope.profileUrl = result.data.profilePhoto;

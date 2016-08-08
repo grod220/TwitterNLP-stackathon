@@ -1,3 +1,5 @@
+
+
 /* The starting CSS styles for the enter animation */
 .getIn.ng-enter {
   transition:0.5s linear all;
@@ -28,13 +30,13 @@
 
 .loader {
   height: 20px;
-  width: 250px;
+  width: 300px;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: 200px auto 0 auto;
 }
 .loader--dot {
   animation-name: loader;
@@ -94,10 +96,10 @@
     transform: translateX(0);
   }
   45% {
-    transform: translateX(230px);
+    transform: translateX(280px);
   }
   65% {
-    transform: translateX(230px);
+    transform: translateX(280px);
   }
   95% {
     transform: translateX(0);

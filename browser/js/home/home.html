@@ -9,7 +9,7 @@
 
 
 <div class="rightSide">
-  <div class="centeredStuff" ng-show="formShow">
+  <div class="centeredStuff getIn" ng-if="formShow">
     <h1 class="rightTitle">Enter a Twitter username</h1>
 
 
@@ -30,7 +30,7 @@
 
 <!-- Loading ticker -->
 
-  <div ng-if="bool" class="containn getIn">
+  <div ng-if="bool" class="getIn">
     <div class="loader">
       <div class="loader--dot"></div>
       <div class="loader--dot"></div>
@@ -44,18 +44,17 @@
 
 
 <!-- PART 2: The result page shows -->
-  <div ng-show="result">
-    <h1>{{ result.data.documentSentiment }}</h1>
-    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-     Reset
+  <div class="theResult getIn" ng-show="result">
+    <img class="twitterImage" ng-src="{{ profileUrl }}" />
+
+    <div class="resultsData">
+      <p><span class="resultsOuter">Polarity: ({{ result.data.documentSentiment.polarity }})</span></p>
+      <p><span class="resultsOuter">Magnitude: ({{ result.data.documentSentiment.magnitude }})</span></p>
+    </div>
+
+    <button type="submit" ng-click="formShow=true; result=false; userName='';" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent tryAnother">
+     Try another
     </button>
-
-    </br>
-    <p>{{ profileUrl }}</p>
-    <img ng-src="{{ profileUrl }}" />
-    <h1>Polarity: {{ result.data.documentSentiment.polarity }}</h1>
-    <h1>Magnitude: {{ result.data.documentSentiment.magnitude }}</h1>
-
 
   </div>
 
